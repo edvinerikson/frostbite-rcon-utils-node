@@ -11,6 +11,7 @@
     "battlefield",
     "rcon"
   ],
+  "repository": "https://github.com/EdvinErikson/frostbite-rcon-utils",
   "author": "Edvin Erikson",
   "license": "GPL 2.0"
 }

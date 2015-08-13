@@ -9,8 +9,8 @@ A library that takes care of the encoding and decoding of packets sent to or fro
 You can use this library to create servers or clients that will use the Battlefield RCON protocol.
 
 # Table of contents
- * [Changelog](https://github.com/edvinerikson/frostbite-rcon-utils-node/blob/cleanup/CHANGELOG.md)
- * [Code of conduct](https://github.com/edvinerikson/frostbite-rcon-utils-node/blob/cleanup/CODE_OF_CONDUCT.md)
+ * [Changelog](https://github.com/edvinerikson/frostbite-rcon-utils-node/blob/master/CHANGELOG.md)
+ * [Code of conduct](https://github.com/edvinerikson/frostbite-rcon-utils-node/blob/master/CODE_OF_CONDUCT.md)
 
 # License
 This is licensed under MIT, hack away!

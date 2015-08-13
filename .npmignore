@@ -4,3 +4,5 @@ src
 test
 examples
 coverage
+docs
+book.json

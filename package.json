@@ -11,6 +11,10 @@
     "test:watch": "NODE_ENV=test mocha --watch",
     "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha",
     "coveralls": "coveralls < coverage/lcov.info",
+    "docs:clean": "rimraf _book",
+    "docs:build": "gitbook build .",
+    "docs:watch": "gitbook serve",
+    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Update docs' && git push git@github.com:edvinerikson/frostbite-rcon-utils-node gh-pages --force",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build"
   },
   "repository": {
@@ -38,6 +42,7 @@
     "eslint": "^0.23",
     "eslint-config-airbnb": "0.0.6",
     "expect": "^1.6.0",
+    "gitbook-cli": "^0.3.4",
     "isparta": "^3.0.3",
     "mocha": "^2.2.5",
     "rimraf": "^2.3.4"

@@ -26,12 +26,12 @@ export function createPacket(
   isFromServer: boolean,
   isResponse: boolean,
   data: [string, number, boolean]): Packet {
-  let packet = {
+  const packet = {
     sequence: sequence,
     isFromServer: isFromServer,
     isResponse: isResponse,
     totalWords: data.length,
-    data: data
+    data: data,
   };
   packet.size = calculatePacketSize(packet);
   return packet;

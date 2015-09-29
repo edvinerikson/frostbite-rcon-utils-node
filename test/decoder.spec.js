@@ -14,25 +14,25 @@ describe('decoder', () => {
         isFromServer: packet.isFromServer,
         isResponse: packet.isResponse,
         size: packet.size,
-        totalWords: packet.totalWords
+        totalWords: packet.totalWords,
       });
     });
   });
 
   describe('decodeData', () => {
     it('returns a list of decoded words', () => {
-      let decodedWords = decodeData(encodedPacket);
+      const decodedWords = decodeData(encodedPacket);
       expect(decodedWords).toBeA(Array);
       expect(decodedWords.length).toBe(packet.data.length);
     });
 
     it('converts numbers to native Number type', () => {
-      let decodedWords = decodeData(encodedPacket);
+      const decodedWords = decodeData(encodedPacket);
       expect(decodedWords[1]).toBe(packet.data[1]);
     });
 
     it('converts booleans to native Boolean type', () => {
-      let decodedWords = decodeData(encodedPacket);
+      const decodedWords = decodeData(encodedPacket);
       expect(decodedWords[2]).toBe(packet.data[2]);
     });
   });

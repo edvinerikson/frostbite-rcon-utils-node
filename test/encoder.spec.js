@@ -6,23 +6,23 @@ describe('encoder', () => {
   const packet = createPacket(100, true, true, ['serverInfo']);
 
   describe('encodeInfo', () => {
-    let info = encodeInfo(packet);
-    let h = info.readUInt32LE(0);
+    const info = encodeInfo(packet);
+    const header = info.readUInt32LE(0);
 
     it('returns a Buffer', () => {
       expect(encodeInfo(packet)).toBeA(Buffer);
     });
 
     it('encodes the sequence at 0x3fffffff', () => {
-      expect((h & 0x3fffffff)).toBe(packet.sequence);
+      expect((header & 0x3fffffff)).toBe(packet.sequence);
     });
 
     it('encodes the isFromServer flag at 0x80000000', () => {
-      expect((!!(h & 0x80000000))).toBe(packet.isFromServer);
+      expect((!!(header & 0x80000000))).toBe(packet.isFromServer);
     });
 
     it('encodes the isResponse flag at 0x40000000', () => {
-      expect((!!(h & 0x40000000))).toBe(packet.isResponse);
+      expect((!!(header & 0x40000000))).toBe(packet.isResponse);
     });
 
     it('encodes the packet size at the second byte', () => {
@@ -47,7 +47,7 @@ describe('encoder', () => {
     });
 
     it('encodes the word at the second byte to the length of the word', () => {
-      let word = packet.data[0];
+      const word = packet.data[0];
       expect(encodeData(packet.data)[0].toString('ascii', 4, 4 + word.length)).toBe(word);
     });
   });

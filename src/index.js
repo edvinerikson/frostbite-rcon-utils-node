@@ -5,5 +5,5 @@ export * from './shared/utils';
 
 export {
   encodePacket,
-  decodePacket
+  decodePacket,
 };

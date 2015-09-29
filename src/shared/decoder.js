@@ -2,14 +2,14 @@
 import type Packet from './Packet';
 
 export function decodeInfo(buffer: Buffer): Object {
-  let h = buffer.readUInt32LE(0);
+  const header = buffer.readUInt32LE(0);
 
   return {
-    isFromServer: !!(h & 0x80000000),
-    isResponse: !!(h & 0x40000000),
-    sequence: (h & 0x3fffffff),
+    isFromServer: !!(header & 0x80000000),
+    isResponse: !!(header & 0x40000000),
+    sequence: (header & 0x3fffffff),
     size: buffer.readUInt32LE(4),
-    totalWords: buffer.readUInt32LE(8)
+    totalWords: buffer.readUInt32LE(8),
   };
 }
 
@@ -22,7 +22,7 @@ export function decodeData(buffer: Buffer): [string, number, boolean] {
   let offset = 12;
 
   while (offset < buffer.length) {
-    let length = buffer.readUInt32LE(offset);
+    const length = buffer.readUInt32LE(offset);
     offset += 4;
     words.push(buffer.toString('ascii', offset, offset + length));
     offset += (length + 1);
@@ -42,6 +42,6 @@ export function decodeData(buffer: Buffer): [string, number, boolean] {
 export function decodePacket(buf: Buffer): Packet {
   return {
     ...decodeInfo(buf),
-    data: decodeData(buf)
+    data: decodeData(buf),
   };
 }

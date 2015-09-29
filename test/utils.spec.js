@@ -18,7 +18,7 @@ describe('utils', () => {
         isResponse: false,
         size: calculatePacketSize(packet),
         totalWords: 1,
-        data: ['OK']
+        data: ['OK'],
       });
     });
   });

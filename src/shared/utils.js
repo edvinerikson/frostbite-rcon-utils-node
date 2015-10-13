@@ -14,6 +14,10 @@ export function calculatePacketSize(packet: Packet): number {
   return size;
 }
 
+export function containsCompletePacket(buffer: Buffer): boolean {
+  return !(buffer.length < 8 || buffer.length < buffer.readUInt32LE(4));
+}
+
 /**
  * Creates a packet based on the parameters given.
  * @param {number} sequence - The sequence used to identify a request/response pair.

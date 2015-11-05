@@ -41,7 +41,7 @@
     "coveralls": "2.11.4",
     "eslint": "1.8.0",
     "eslint-config-airbnb": "0.1.0",
-    "eslint-plugin-react": "^3.5.0",
+    "eslint-plugin-react": "^3.7.1",
     "expect": "1.12.2",
     "gitbook-cli": "1.0.0",
     "isparta": "3.5.1",

@@ -1,6 +1,6 @@
 {
   "name": "frostbite-rcon-utils",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "frostbite-rcon-utils",
   "main": "lib/index.js",
   "scripts": {

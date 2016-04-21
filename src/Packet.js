@@ -5,5 +5,5 @@ export type Packet = { // eslint-disable-line block-scoped-var
   isResponse: boolean;
   size: number;
   totalWords: number;
-  data: [ string, number, boolean ];
+  words: Array<any>;
 };

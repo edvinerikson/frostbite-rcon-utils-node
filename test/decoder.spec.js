@@ -1,7 +1,7 @@
 import expect from 'expect';
-import { createPacket } from '../src/shared/utils';
-import { encodePacket } from '../src/shared/encoder';
-import { decodePacket, decodeInfo, decodeData } from '../src/shared/decoder';
+import { createPacket } from '../src/utils';
+import { encodePacket } from '../src/encoder';
+import { decodePacket, decodeInfo, decodeData } from '../src/decoder';
 
 describe('decoder', () => {
   const packet = createPacket(100, true, true, ['serverInfo', 123, true]);
@@ -23,17 +23,17 @@ describe('decoder', () => {
     it('returns a list of decoded words', () => {
       const decodedWords = decodeData(encodedPacket);
       expect(decodedWords).toBeA(Array);
-      expect(decodedWords.length).toBe(packet.data.length);
+      expect(decodedWords.length).toBe(packet.words.length);
     });
 
     it('converts numbers to native Number type', () => {
       const decodedWords = decodeData(encodedPacket);
-      expect(decodedWords[1]).toBe(packet.data[1]);
+      expect(decodedWords[1]).toBe(packet.words[1]);
     });
 
     it('converts booleans to native Boolean type', () => {
       const decodedWords = decodeData(encodedPacket);
-      expect(decodedWords[2]).toBe(packet.data[2]);
+      expect(decodedWords[2]).toBe(packet.words[2]);
     });
   });
 

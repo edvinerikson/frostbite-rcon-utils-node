@@ -22,18 +22,18 @@ let packet = {
   sequence: 0,
   isFromServer: false,
   isResponse: false,
-  data: ['serverInfo']
+  words: ['serverInfo']
 };
-packet.size = calculatePacketSize(packet);
-packet.totalWords = packet.data.length;
+packet.size = calculatePacketSize(packet.words);
+packet.totalWords = packet.words.length;
 
 /**
  * To reduce the amount of boilerplate code used to create a packet.
- * You can use the built-in createPacket function.
+ * You can use the built-in function createPacket.
  * createPacket(0, // sequence
  *              false, // isFromServer
  *              false, // isResponse
- *              ['serverInfo'] // data
+ *              ['serverInfo'] // words
  *);
  */
 

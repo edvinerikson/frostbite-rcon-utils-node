@@ -1,6 +1,6 @@
 import expect from 'expect';
-import { createPacket } from '../src/shared/utils';
-import { encodePacket, encodeInfo, encodeData } from '../src/shared/encoder';
+import { createPacket } from '../src/utils';
+import { encodePacket, encodeInfo, encodeData } from '../src/encoder';
 
 describe('encoder', () => {
   const packet = createPacket(100, true, true, ['serverInfo']);
@@ -29,26 +29,26 @@ describe('encoder', () => {
       expect(info.readUInt32LE(4)).toBe(packet.size);
     });
 
-    it('encodes the total number of words (totalWords) used in the data key at the third byte', () => {
+    it('encodes the total number of words (totalWords) in the third byte', () => {
       expect(info.readUInt32LE(8)).toBe(packet.totalWords);
     });
   });
 
   describe('encodeData', () => {
     it('returns a list of Buffers', () => {
-      expect(encodeData(packet.data)).toBeA(Array);
-      encodeData(packet.data).forEach((buffer) => {
+      expect(encodeData(packet.words)).toBeA(Array);
+      encodeData(packet.words).forEach((buffer) => {
         expect(buffer).toBeA(Buffer);
       });
     });
 
     it('encodes the length of the word at the first byte', () => {
-      expect(encodeData(packet.data)[0].readUInt32LE(0)).toBe(packet.data[0].length);
+      expect(encodeData(packet.words)[0].readUInt32LE(0)).toBe(packet.words[0].length);
     });
 
     it('encodes the word at the second byte to the length of the word', () => {
-      const word = packet.data[0];
-      expect(encodeData(packet.data)[0].toString('ascii', 4, 4 + word.length)).toBe(word);
+      const word = packet.words[0];
+      expect(encodeData(packet.words)[0].toString('ascii', 4, 4 + word.length)).toBe(word);
     });
   });
 

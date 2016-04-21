@@ -1,9 +1,3 @@
-import { encodePacket } from './shared/encoder';
-import { decodePacket } from './shared/decoder';
-
-export * from './shared/utils';
-
-export {
-  encodePacket,
-  decodePacket,
-};
+export { encodePacket } from './encoder';
+export { decodePacket } from './decoder';
+export * from './utils';

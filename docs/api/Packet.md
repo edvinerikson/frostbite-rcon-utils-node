@@ -10,7 +10,7 @@ It's structure is described as a [Flow annotation](http://flowtype.org/docs/type
   3. `isResponse` A Boolean. Indicating that this is a response to another packet.
   4. `size` A Number. Indicating the size of the packet.
   5. `totalWords` A Number. Indicating how many words it is in the `data` key.
-  6. `data` An Array. That have the command + arguments.
+  6. `words` An Array. That have the command + arguments.
 
 ### Example
 
@@ -22,7 +22,7 @@ type Packet = {
   isResponse: boolean;
   size: number;
   totalWords: number;
-  data: [string, number, boolean];
+  words: Array<any>;
 }
 ```
 
@@ -33,10 +33,9 @@ Request to a server.
     isFromServer: false,
     isResponse: false,
     totalWords: 1,
-    data: ['serverInfo']
+    words: ['serverInfo']
   };
-  packet.size = calculatePacketSize(packet);
-
+  packet.size = calculatePacketSize(packet.words);
 ```
 
 Response from a server.
@@ -46,10 +45,9 @@ Response from a server.
     isFromServer: false, // NOTE: isFromServer is still false due to this packet originated on the client.
     isResponse: true,
     totalWords: 2,
-    data: ['OK', 'Some server info']
+    words: ['OK', 'Some server info']
   };
-  packet.size = calculatePacketSize(packet);
-
+  packet.size = calculatePacketSize(packet.words);
 ```
 
 Request from a server.
@@ -59,8 +57,7 @@ Request from a server.
     isFromServer: true,
     isResponse: false,
     totalWords: 2,
-    data: ['player.onKill', 'Edvin_1337']
+    words: ['player.onKill', 'Edvin_1337']
   };
-  packet.size = calculatePacketSize(packet);
-
+  packet.size = calculatePacketSize(packet.words);
 ```

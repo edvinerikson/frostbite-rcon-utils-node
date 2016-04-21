@@ -22,10 +22,10 @@ let packet = {
   sequence: 0,
   isFromServer: false,
   isResponse: false,
-  data: ['serverInfo']
+  words: ['serverInfo']
 };
-packet.size = calculatePacketSize(packet);
-packet.totalWords = packet.data.length;
+packet.size = calculatePacketSize(packet.words);
+packet.totalWords = packet.words.length;
 
 /**
  * To reduce the amount of boilerplate code used to create a packet.
@@ -33,15 +33,15 @@ packet.totalWords = packet.data.length;
  * createPacket(0, // sequence
  *              false, // isFromServer
  *              false, // isResponse
- *              ['serverInfo'] // data
+ *              ['serverInfo'] // words
  *);
  */
 
 // Small RCON server. Features: outputs the data received.
-let server = net.createServer((socket) => {
-  socket.on('data', (buf) => {
+let server = net.createServer(socket => {
+  socket.on('data', buf => {
     let decodedPacket = decodePacket(buf);
-    console.log(decodedPacket.data); // => ['serverInfo']
+    console.log(decodedPacket.words); // => ['serverInfo']
   });
 });
 

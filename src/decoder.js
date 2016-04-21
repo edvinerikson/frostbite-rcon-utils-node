@@ -1,5 +1,5 @@
 /* @flow */
-import type Packet from './Packet';
+import type { Packet } from './Packet';
 
 export function decodeInfo(buffer: Buffer): Object {
   const header = buffer.readUInt32LE(0);
@@ -13,11 +13,11 @@ export function decodeInfo(buffer: Buffer): Object {
   };
 }
 
-export function decodeData(buffer: Buffer): [string, number, boolean] {
+export function decodeData(buffer: Buffer): Array<any> {
   let words = [];
   /**
-   * offset is 12 by default becasue sequence, isFromServer and isResponse is in the first byte (bit: 0:4).
-   * size and totalWords is in the other two bytes. (bit: 4:12)
+   * offset is 12 by default becasue sequence, isFromServer and isResponse is
+   * in the first byte (bit: 0:4). size and totalWords is in the other two bytes. (bit: 4:12)
    */
   let offset = 12;
 
@@ -42,6 +42,6 @@ export function decodeData(buffer: Buffer): [string, number, boolean] {
 export function decodePacket(buf: Buffer): Packet {
   return {
     ...decodeInfo(buf),
-    data: decodeData(buf),
+    words: decodeData(buf),
   };
 }

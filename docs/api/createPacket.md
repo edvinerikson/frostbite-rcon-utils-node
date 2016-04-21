@@ -8,7 +8,7 @@ You will use it when you have data you want to transform to a structure that [en
 1. `sequence` A Number. Keeps track of request/response pair.
 2. `isFromServer` A Boolean. Indicating that this packet originated on the server.
 3. `isResponse` A Boolean. Indicating that this is a response to another packet.
-4. `data` An Array. That have the command + arguments to be sent.
+4. `words` An Array. That have the command + arguments to be sent.
 
 
 #### Returns
@@ -29,8 +29,8 @@ console.log(packet);
 //   sequence: 0,
 //   isFromServer: false,
 //   isResponse: false,
-//   size: unknown, // couldn't calculate it in my head, sorry..
+//   size: 
 //   totalWords: 1,
-//   data: ['serverInfo']
+//   words: ['serverInfo']
 // }
 ```

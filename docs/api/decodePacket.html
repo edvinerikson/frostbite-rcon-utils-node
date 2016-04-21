@@ -1,0 +1,351 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>decodePacket | frostbite-rcon-utils</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.3.3">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../docs/api/calculatePacketSize.html" />
+    
+    
+    <link rel="prev" href="../../docs/api/encodePacket.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1.4" data-basepath="../.." data-revision="Thu Apr 21 2016 15:32:28 GMT+0200 (CEST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Read Me
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/api/index.html">
+            
+                
+                    <a href="../../docs/api/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        API Reference
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="docs/api/Packet.html">
+            
+                
+                    <a href="../../docs/api/Packet.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Packet
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docs/api/createPacket.html">
+            
+                
+                    <a href="../../docs/api/createPacket.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        createPacket
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="docs/api/encodePacket.html">
+            
+                
+                    <a href="../../docs/api/encodePacket.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        encodePacket
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="docs/api/decodePacket.html">
+            
+                
+                    <a href="../../docs/api/decodePacket.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        decodePacket
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="docs/api/calculatePacketSize.html">
+            
+                
+                    <a href="../../docs/api/calculatePacketSize.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        calculatePacketSize
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >frostbite-rcon-utils</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="-decodepacket-buffer"><code>decodePacket(buffer)</code></h1>
+<p>Creates a <a href="Packet.html">Packet</a> that holds the decoded version of the <a href="https://nodejs.org/api/buffer.html" target="_blank">Buffer</a> you supplied to the function.<br>You will use it when you want to read the data received from a server/client (depends on if you are creating server or a client).</p>
+<h4 id="arguments">Arguments</h4>
+<ol>
+<li><code>buffer</code> A <a href="https://nodejs.org/api/buffer.html" target="_blank"><code>Buffer</code></a> instance.</li>
+</ol>
+<h4 id="returns">Returns</h4>
+<p><a href="Packet.html"><code>Packet</code></a>: A <a href="Packet.html">Packet</a> object that holds the decoded version of the <a href="https://nodejs.org/api/buffer.html" target="_blank"><code>Buffer</code></a> instance you supplied as an argument to the function.</p>
+<h4 id="example">Example</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> net <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;net&apos;</span>;
+<span class="hljs-keyword">import</span> { decodePacket, encodePacket, calculatePacketSize } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;frostbite-rcon-utils&apos;</span>;
+
+<span class="hljs-keyword">let</span> packet = {
+  sequence: <span class="hljs-number">0</span>,
+  isFromServer: <span class="hljs-literal">false</span>,
+  isResponse: <span class="hljs-literal">false</span>,
+  words: [<span class="hljs-string">&apos;serverInfo&apos;</span>]
+};
+packet.size = calculatePacketSize(packet.words);
+packet.totalWords = packet.words.length;
+
+<span class="hljs-comment">/**
+ * To reduce the amount of boilerplate code used to create a packet.
+ * You can use the built-in createPacket function.
+ * createPacket(0, // sequence
+ *              false, // isFromServer
+ *              false, // isResponse
+ *              [&apos;serverInfo&apos;] // words
+ *);
+ */</span>
+
+<span class="hljs-comment">// Small RCON server. Features: outputs the data received.</span>
+<span class="hljs-keyword">let</span> server = net.createServer(socket =&gt; {
+  socket.on(<span class="hljs-string">&apos;data&apos;</span>, buf =&gt; {
+    <span class="hljs-keyword">let</span> decodedPacket = decodePacket(buf);
+    <span class="hljs-built_in">console</span>.log(decodedPacket.words); <span class="hljs-comment">// =&gt; [&apos;serverInfo&apos;]</span>
+  });
+});
+
+server.listen(<span class="hljs-number">1337</span>);
+
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> This needs to run in a separate NodeJS instance</span>
+<span class="hljs-comment">// as of the .listen method blocks the code down here.</span>
+<span class="hljs-keyword">let</span> encodedPacket = encodePacket(packet);
+
+<span class="hljs-comment">// Small RCON client. Features: sends the hard-coded packet written at the top.</span>
+<span class="hljs-keyword">let</span> client = net.connect(<span class="hljs-number">1337</span>, <span class="hljs-string">&apos;127.0.0.1&apos;</span>, () =&gt; {
+  client.write(encodedPacket);
+});
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../docs/api/encodePacket.html" class="navigation navigation-prev " aria-label="Previous page: encodePacket"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../docs/api/calculatePacketSize.html" class="navigation navigation-next " aria-label="Next page: calculatePacketSize"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

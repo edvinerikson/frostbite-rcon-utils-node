@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "5.0.0"
+  - "0.12"
+
+script:
+  - "npm test"
+  - "npm run lint"
+  - "npm run test:cov"
+  - "npm run coveralls"

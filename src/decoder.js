@@ -21,7 +21,7 @@ export function decodeData(buffer: Buffer): Array<any> {
    */
   let offset = 12;
 
-  while (offset < buffer.length) {
+  while (offset < buffer.readUInt32LE(4)) {
     const length = buffer.readUInt32LE(offset);
     offset += 4;
     words.push(buffer.toString('ascii', offset, offset + length));
